@@ -1,25 +1,46 @@
+"use client";
+
 import { styles } from "../style";
 import ComputersCanvas from "./canvas/Computers";
+import { motion } from "framer-motion";
+import TypewriterEffect from "./TypewriterEffect";
 
 const Hero = () => {
+  const heroText = [
+    "I am a full-stack web developer who makes interfaces and web applications.",
+  ];
+
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
         className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </div>
-
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I&apos;m <span className="text-[#915EFF]">Mohan</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I am a motherfucking full-stack web developer who makes interfaces
-            and web applications
-          </p>
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: -50,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.4,
+              duration: 1.5,
+              ease: "easeInOut",
+            }}
+            className={`${styles.heroHeadText} text-white`}
+          >
+            Hi, I&apos;m <span className="text-[#915EFF]">Mohan Drey</span>
+          </motion.h1>
+
+          <TypewriterEffect
+            className={`${styles.heroSubText} text-white mt-2`}
+            letterDelayTime={0.15}
+            cursorFadeTime={0.15}
+            text={heroText}
+          />
         </div>
       </div>
 
