@@ -5,9 +5,17 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+import useProgressStore from "@/app/stores/useProgressStore";
 
 const Computers = ({ isMobile }: { isMobile?: boolean }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
+  const setIsLoaded = useProgressStore((state) => state.setIsLoaded);
+
+  useEffect(() => {
+    if (computer) {
+      setIsLoaded(true);
+    }
+  }, [computer, setIsLoaded]);
 
   return (
     <mesh>

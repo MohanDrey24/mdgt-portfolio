@@ -47,6 +47,9 @@ importers:
       three:
         specifier: ^0.171.0
         version: 0.171.0
+      zustand:
+        specifier: ^5.0.3
+        version: 5.0.3(@types/react@19.0.9)(react@19.0.0)(use-sync-external-store@1.4.0(react@19.0.0))
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3

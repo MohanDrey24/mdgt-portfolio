@@ -1,7 +1,14 @@
 import { Html, useProgress } from "@react-three/drei";
+import useProgressStore from "../stores/useProgressStore";
+import { useEffect } from "react";
 
 const CanvasLoader = () => {
   const { progress } = useProgress();
+  const setProgress = useProgressStore((state) => state.setProgress);
+
+  useEffect(() => {
+    setProgress(progress);
+  }, [progress]);
 
   return (
     <Html
