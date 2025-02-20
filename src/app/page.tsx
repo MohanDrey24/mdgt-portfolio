@@ -1,18 +1,15 @@
 "use client";
 
+import HorizontalScroll from "./components/HorizontalScroll";
 import Hero from "./components/Hero";
-import useProgressStore from "./stores/useProgressStore";
+import ParticlesContainer from "./components/ParticlesContainer";
 
 export default function Home() {
-  const progress = useProgressStore((state) => state.progress);
-  const isLoaded = useProgressStore((state) => state.isLoaded);
-
   return (
-    <div className="relative z-0 bg-primary">
-      {/* {progress} */}
-      <div className="bg-amber-400">
-        <Hero />
-      </div>
+    <div className="bg-amber-600 flex flex-col">
+      <ParticlesContainer />
+      <Hero />
+      <HorizontalScroll />
     </div>
   );
 }
