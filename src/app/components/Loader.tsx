@@ -8,7 +8,7 @@ const CanvasLoader = () => {
 
   useEffect(() => {
     setProgress(progress);
-  }, [progress]);
+  }, [progress, setProgress]);
 
   return (
     <Html
