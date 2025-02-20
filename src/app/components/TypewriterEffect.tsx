@@ -27,7 +27,7 @@ const TypewriterEffect = ({
     }, swapDelayTime);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [swapDelayTime, text]);
 
   return (
     <p className={cn("font-bold text-5xl leading-relaxed", className)}>
