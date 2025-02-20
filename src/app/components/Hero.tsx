@@ -7,7 +7,7 @@ import TypewriterEffect from "./TypewriterEffect";
 
 const Hero = () => {
   const heroText = [
-    "I am a full-stack web developer who makes interfaces and web applications.",
+    "I am a full-stack web developer who makes web applications.",
   ];
 
   return (
@@ -32,7 +32,7 @@ const Hero = () => {
             }}
             className={`${styles.heroHeadText} text-white`}
           >
-            Hi, I&apos;m <span className="text-[#915EFF]">Mohan Drey</span>
+            Hi, I&apos;m <span className="text-[#763568]">Mohan Drey</span>
           </motion.h1>
 
           <TypewriterEffect
