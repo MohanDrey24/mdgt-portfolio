@@ -30,13 +30,13 @@ const Hero = () => {
               duration: 1.5,
               ease: "easeInOut",
             }}
-            className={`${styles.heroHeadText} text-white`}
+            className={`${styles.heroHeadText}`}
           >
-            Hi, I&apos;m <span className="text-[#763568]">Mohan Drey</span>
+            Hi, I&apos;m <span className="text-[#D32F2F]">Mohan Drey</span>
           </motion.h1>
 
           <TypewriterEffect
-            className={`${styles.heroSubText} text-white mt-2`}
+            className={`${styles.heroSubText} text-[#333] mt-2`}
             letterDelayTime={0.15}
             cursorFadeTime={0.15}
             text={heroText}
