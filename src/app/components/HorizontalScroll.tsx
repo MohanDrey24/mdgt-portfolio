@@ -10,6 +10,7 @@ type CardProps = {
 interface Card {
   card: CardProps;
 }
+
 const HorizontalScroll = () => {
   return (
     <div>
@@ -80,24 +81,4 @@ const cards = [
     title: "Title 3",
     id: 3,
   },
-  // {
-  //   bgColor: "pink",
-  //   title: "Title 4",
-  //   id: 4,
-  // },
-  // {
-  //   bgColor: "red",
-  //   title: "Title 5",
-  //   id: 5,
-  // },
-  // {
-  //   bgColor: "gray",
-  //   title: "Title 6",
-  //   id: 6,
-  // },
-  // {
-  //   bgColor: "yellow",
-  //   title: "Title 7",
-  //   id: 7,
-  // },
 ];
