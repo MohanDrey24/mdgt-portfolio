@@ -5,11 +5,13 @@ import ComputersCanvas from "./canvas/Computers";
 import { motion } from "framer-motion";
 import TypewriterEffect from "./TypewriterEffect";
 
-const Hero = () => {
-  const heroText = [
-    "I am a full-stack web developer who makes web applications.",
-  ];
-
+const Hero = ({
+  heroText,
+  isComputerVisible = true,
+}: {
+  heroText: string[];
+  isComputerVisible: boolean;
+}) => {
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
@@ -32,19 +34,19 @@ const Hero = () => {
             }}
             className={`${styles.heroHeadText}`}
           >
-            Hi, I&apos;m <span className="text-[#D32F2F]">Mohan Drey</span>
+            HI, I&apos;M <span className="text-[#D32F2F]">MOHAN DREY</span>
           </motion.h1>
 
           <TypewriterEffect
-            className={`${styles.heroSubText} text-[#333] mt-2`}
-            letterDelayTime={0.15}
-            cursorFadeTime={0.15}
+            className={`${styles.heroSubText} mt-2`}
+            letterDelayTime={0.055}
+            cursorFadeTime={0.155}
             text={heroText}
           />
         </div>
       </div>
 
-      <ComputersCanvas />
+      {isComputerVisible && <ComputersCanvas />}
     </section>
   );
 };
