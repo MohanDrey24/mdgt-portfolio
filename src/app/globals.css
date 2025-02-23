@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --font-dm: DM;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: "#050816";
@@ -25,7 +26,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: url("/assets/ambot.png");
   --foreground: #171717;
 }
 
@@ -50,4 +51,9 @@ body {
     #804dee 0%,
     rgba(60, 51, 80, 0) 100%
   );
+}
+
+@font-face {
+  font-family: DM;
+  src: url("/fonts/DMSans.ttf");
 }
