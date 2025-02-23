@@ -48,7 +48,7 @@ const ParticlesContainer = ({ className }: ParticlesContainerProps) => {
                 },
                 repulse: {
                   distance: 200,
-                  duration: 0.4,
+                  duration: 0.1,
                 },
               },
             },
@@ -70,7 +70,7 @@ const ParticlesContainer = ({ className }: ParticlesContainerProps) => {
                   default: "bounce",
                 },
                 random: false,
-                speed: 3,
+                speed: 2,
                 straight: false,
               },
               number: {
