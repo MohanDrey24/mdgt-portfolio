@@ -30,7 +30,7 @@ const TypewriterEffect = ({
   }, [swapDelayTime, text]);
 
   return (
-    <p className={cn("font-bold text-5xl leading-relaxed", className)}>
+    <p className={cn("leading-relaxed", className)}>
       {text[exampleIndex].split("").map((l, i) => {
         return (
           <motion.span className="relative z-1000" key={`${l}-${i}`}>
@@ -53,8 +53,8 @@ const TypewriterEffect = ({
                 duration: cursorFadeTime,
                 ease: "easeInOut",
               }}
-              // className="bg-black absolute bottom-[3px] left-[1px] right-0 top-[3px] z-0"
-              className="border-black border-r-2 absolute bottom-[3px] left-[1px] right-0 top-[3px]"
+              className="bg-black absolute bottom-[3px] left-[1px] right-0 top-[3px] z-0"
+              // className="border-black border-r-2 absolute bottom-[3px] left-[1px] right-0 top-[3px]"
             />
           </motion.span>
         );
