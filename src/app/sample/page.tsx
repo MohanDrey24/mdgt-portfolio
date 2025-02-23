@@ -1,18 +1,14 @@
-import ParticlesContainer from "../components/ParticlesContainer";
-// import TypewriterEffect from "../components/TypewriterEffect";
+"use client";
+
+import HorizontalScroll from "../components/HorizontalScroll";
+import { NewHero } from "../components/NewHero";
 
 const Sample = () => {
-  // const examples = [
-  //   "I'm a full-stack developer",
-  //   "Wtf is happening with this shit",
-  //   "I create and fix bugs",
-  // ];
-
   return (
-    <div className="flex h-screen items-center justify-center flex-col">
-      {/* <TypewriterEffect text={examples} /> */}
-      <ParticlesContainer />
-    </div>
+    <main>
+      <NewHero />
+      <HorizontalScroll />
+    </main>
   );
 };
 
