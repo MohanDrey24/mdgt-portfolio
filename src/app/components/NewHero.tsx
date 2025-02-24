@@ -26,7 +26,7 @@ export const NewHero = () => {
   };
 
   return (
-    <section className="h-screen w-screen bg-black opacity-[0.95] space-y-10 p-8">
+    <section className="h-screen w-screen bg-black opacity-[0.85] space-y-10 p-8">
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
           <motion.span
