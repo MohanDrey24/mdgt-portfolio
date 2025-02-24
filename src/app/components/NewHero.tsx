@@ -10,7 +10,7 @@ export const NewHero = () => {
       opacity: 0,
       y: 100,
       rotateX: 90,
-      skew: -10,
+      skew: -20,
     },
     animateLabel: {
       opacity: 1,
@@ -23,6 +23,38 @@ export const NewHero = () => {
       duration: 0.8,
       ease: "easeInOut",
     }),
+  };
+
+  const subTitleVariants = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+    },
+    transition: {
+      delay: 0.5,
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  };
+
+  const dividerVariants = {
+    initial: {
+      opacity: 0,
+      x: -200,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+    },
+    transition: {
+      duration: 0.5,
+      delay: 0.2,
+      ease: "easeInOut",
+    },
   };
 
   return (
@@ -38,14 +70,21 @@ export const NewHero = () => {
           >
             Mohan Drey
           </motion.span>
-          <motion.span className="hidden lg:block text-white font-dm font-bold mt-5">
+          <motion.span
+            variants={subTitleVariants}
+            initial="initial"
+            animate="animate"
+            transition={subTitleVariants.transition}
+            className="hidden lg:block text-white font-dm font-bold mt-5"
+          >
             Mid-Level Full Stack Developer
           </motion.span>
         </div>
         <motion.hr
-          initial={{ x: 500 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeInOut" }}
+          variants={dividerVariants}
+          initial="initial"
+          animate="animate"
+          transition={dividerVariants.transition}
         />
       </div>
 
@@ -56,6 +95,7 @@ export const NewHero = () => {
             alt="windmill"
             height={120}
             width={120}
+            className="w-20 h-20 sm:w-36 sm:h-36"
             animate={{
               rotate: [0, 720],
             }}
@@ -75,9 +115,10 @@ export const NewHero = () => {
           </motion.span>
         </div>
         <motion.hr
-          initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
+          variants={dividerVariants}
+          initial="initial"
+          animate="animate"
+          transition={dividerVariants.transition}
         />
       </div>
 
@@ -95,6 +136,7 @@ export const NewHero = () => {
           <RotatingImage
             src="/assets/clover.svg"
             alt="clover"
+            className="w-20 h-20 sm:w-40 sm:h-40"
             animate={{
               rotate: [0, 720],
             }}
@@ -105,17 +147,25 @@ export const NewHero = () => {
           />
         </div>
         <motion.hr
-          initial={{ x: 200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6, ease: "easeInOut" }}
+          variants={dividerVariants}
+          initial="initial"
+          animate="animate"
+          transition={dividerVariants.transition}
         />
       </div>
 
       <div className="flex flex-col gap-8">
         <div className="flex">
-          <span className="hidden lg:block text-white font-dm font-bold">
-            Cebu - Philippines
-          </span>
+          <motion.div
+            variants={subTitleVariants}
+            initial="initial"
+            animate="animate"
+            transition={subTitleVariants.transition}
+            className="hidden lg:flex lg:flex-col text-white font-dm font-bold"
+          >
+            <span>Cebu City</span>
+            <span>-Philippines</span>
+          </motion.div>
           <motion.span
             variants={titleVariants}
             initial="initialLabel"
@@ -127,9 +177,10 @@ export const NewHero = () => {
           </motion.span>
         </div>
         <motion.hr
-          initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.5, delay: 0.8, ease: "easeInOut" }}
+          variants={dividerVariants}
+          initial="initial"
+          animate="animate"
+          transition={dividerVariants.transition}
         />
       </div>
     </section>
