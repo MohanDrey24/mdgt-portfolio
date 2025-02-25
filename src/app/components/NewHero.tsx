@@ -66,7 +66,7 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.2)}
-            className="text-white font-dm text-6xl sm:text-9xl font-extrabold mb-10 text-nowrap overflow-hidden"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold text-nowrap overflow-hidden"
           >
             Mohan Drey
           </motion.span>
@@ -89,14 +89,15 @@ export const NewHero = () => {
       </div>
 
       <div className="flex flex-col gap-8">
-        <div className="flex">
+        <div className="flex items-center">
           <RotatingImage
             src="/assets/windmill.svg"
             alt="windmill"
-            height={120}
-            width={120}
-            className="w-20 h-20 sm:w-36 sm:h-36"
+            className="w-18 h-18 sm:w-25 sm:h-25 md:w-40 md:h-40"
+            initial={{ opacity: 0, y: 50 }}
             animate={{
+              opacity: 1,
+              y: 0,
               rotate: [0, 720],
             }}
             transition={{
@@ -109,7 +110,7 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.4)}
-            className="text-white font-dm text-6xl sm:text-9xl font-extrabold self-end mb-10 ml-auto"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold ml-auto"
           >
             Tampon
           </motion.span>
@@ -123,21 +124,27 @@ export const NewHero = () => {
       </div>
 
       <div className="flex flex-col gap-8">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <motion.span
             variants={titleVariants}
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.6)}
-            className="text-white font-dm text-6xl sm:text-9xl font-extrabold mb-10 text-nowrap"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold text-nowrap"
           >
             Full Stack
           </motion.span>
           <RotatingImage
             src="/assets/clover.svg"
             alt="clover"
-            className="w-20 h-20 sm:w-40 sm:h-40"
+            className="w-18 h-18 sm:w-25 sm:h-25 md:w-40 md:h-40"
+            initial={{
+              opacity: 0,
+              y: 50,
+            }}
             animate={{
+              opacity: 1,
+              y: 0,
               rotate: [0, 720],
             }}
             transition={{
@@ -171,7 +178,7 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.8)}
-            className="text-white font-dm text-6xl sm:text-9xl font-extrabold mb-10 ml-auto"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold ml-auto"
           >
             Developer
           </motion.span>
@@ -183,6 +190,7 @@ export const NewHero = () => {
           transition={dividerVariants.transition}
         />
       </div>
+      <span className="text-white">YAWA KA</span>
     </section>
   );
 };
