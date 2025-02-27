@@ -44,7 +44,7 @@ const Card = ({ card }: Card) => {
   return (
     <div
       key={card.id}
-      className="group relative h-screen w-screen overflow-hidden"
+      className="group relative bg-[url('/assets/ambot.png')] h-screen w-screen overflow-hidden"
     >
       <div
         style={{
@@ -52,9 +52,9 @@ const Card = ({ card }: Card) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="absolute inset-0 z-0transition-transform duration-300 group-hover:scale-110 opacity-[0.85]"
+        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110 opacity-[0.85]"
       ></div>
-      <div className="absolute inset-0 z-10 grid place-content-center">
+      <div className=" absolute inset-0 z-10 grid place-content-center">
         <p className="bg-gradient-to-br from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
           {card.title}
         </p>
@@ -67,12 +67,12 @@ export default HorizontalScroll;
 
 const cards = [
   {
-    bgColor: "blue",
+    bgColor: "white",
     title: "Title 1",
     id: 1,
   },
   {
-    bgColor: "amber",
+    bgColor: "yellow",
     title: "Title 2",
     id: 2,
   },
