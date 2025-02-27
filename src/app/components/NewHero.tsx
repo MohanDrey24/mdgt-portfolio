@@ -101,6 +101,7 @@ export const NewHero = () => {
               rotate: [0, 720],
             }}
             transition={{
+              delay: 0.2,
               duration: 3,
               ease: "easeOut",
             }}
@@ -148,6 +149,7 @@ export const NewHero = () => {
               rotate: [0, 720],
             }}
             transition={{
+              delay: 0.2,
               duration: 3,
               ease: "easeOut",
             }}
