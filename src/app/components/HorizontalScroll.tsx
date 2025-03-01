@@ -1,8 +1,10 @@
 import { motion, useTransform, useScroll } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 type CardProps = {
   bgColor: string;
+  projectImage: string;
   title: string;
   id: number;
 };
@@ -55,6 +57,12 @@ const Card = ({ card }: Card) => {
         className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110 opacity-[0.85]"
       ></div>
       <div className=" absolute inset-0 z-10 grid place-content-center">
+        <Image
+          src={card.projectImage}
+          alt="Project Image"
+          width={50}
+          height={50}
+        />
         <p className="bg-gradient-to-br from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
           {card.title}
         </p>
@@ -68,16 +76,19 @@ export default HorizontalScroll;
 const cards = [
   {
     bgColor: "white",
+    projectImage: "/assets/clover.svg",
     title: "Title 1",
     id: 1,
   },
   {
     bgColor: "yellow",
+    projectImage: "/assets/windmill.svg",
     title: "Title 2",
     id: 2,
   },
   {
     bgColor: "black",
+    projectImage: "/assets/ambot.png",
     title: "Title 3",
     id: 3,
   },
