@@ -4,8 +4,10 @@ import { useRef } from "react";
 
 type CardProps = {
   bgColor: string;
-  projectImage: string;
+  projectImage?: string;
   title: string;
+  description?: string;
+  technologies?: string[];
   id: number;
 };
 
@@ -46,7 +48,7 @@ const Card = ({ card }: Card) => {
   return (
     <div
       key={card.id}
-      className="group relative bg-[url('/assets/ambot.png')] h-screen w-screen overflow-hidden"
+      className="group relative bg-[url('/assets/static.png')] h-screen w-screen overflow-hidden"
     >
       <div
         style={{
@@ -56,16 +58,30 @@ const Card = ({ card }: Card) => {
         }}
         className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110 opacity-[0.85]"
       ></div>
-      <div className=" absolute inset-0 z-10 grid place-content-center">
-        <Image
-          src={card.projectImage}
-          alt="Project Image"
-          width={50}
-          height={50}
-        />
-        <p className="bg-gradient-to-br from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
-          {card.title}
-        </p>
+      <div className=" absolute inset-0 z-10 grid grid-flow-col place-content-center gap-20">
+        {card.projectImage && (
+          <Image
+            src={card.projectImage}
+            priority
+            alt="Project Image"
+            width={750}
+            height={750}
+          />
+        )}
+        <div className="flex flex-col">
+          <span className="text-6xl font-extrabold font-dm uppercase text-black">
+            {card.title}
+          </span>
+          <span>{card.description}</span>
+          <div>
+            <span>Technologies used:</span>
+            <ul className="list-disc">
+              {card.technologies?.map((tech: string) => {
+                return <li key={tech}>{tech}</li>;
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -76,20 +92,33 @@ export default HorizontalScroll;
 const cards = [
   {
     bgColor: "white",
-    projectImage: "/assets/clover.svg",
-    title: "Title 1",
+    projectImage: "/assets/HIRE_SPHERE.jpg",
+    title: "Hire Sphere",
+    description: "A job posting website",
+    technologies: [
+      "Next.js",
+      "NestJS",
+      "Docker",
+      "AWS EC2",
+      "TailwindCSS",
+      "PostreSQL(Neon)",
+    ],
     id: 1,
   },
   {
     bgColor: "yellow",
     projectImage: "/assets/windmill.svg",
     title: "Title 2",
+    description: "",
+    technologies: [],
     id: 2,
   },
   {
     bgColor: "black",
-    projectImage: "/assets/ambot.png",
+    projectImage: "/assets/static.png",
     title: "Title 3",
+    description: "",
+    technologies: [],
     id: 3,
   },
 ];
