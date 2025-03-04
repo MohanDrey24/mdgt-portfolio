@@ -1,67 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
+import {
+  easeInOut,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 import RotatingImage from "./RotatingImage";
+import {
+  dividerVariants,
+  subTitleVariants,
+  titleVariants,
+} from "../utils/HeroVariants";
+import { useRef } from "react";
 
 export const NewHero = () => {
-  const titleVariants = {
-    initialLabel: {
-      opacity: 0,
-      y: 100,
-      rotateX: 90,
-      skew: -20,
-    },
-    animateLabel: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      skew: 0,
-    },
-    transition: (delay: number) => ({
-      delay,
-      duration: 0.8,
-      ease: "easeInOut",
-    }),
-  };
+  const targetRef = useRef<HTMLDivElement>(null);
 
-  const subTitleVariants = {
-    initial: {
-      opacity: 0,
-      y: 50,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-    },
-    transition: {
-      delay: 0.5,
-      duration: 0.8,
-      ease: "easeInOut",
-    },
-  };
+  const { scrollY } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  });
 
-  const dividerVariants = {
-    initial: {
-      opacity: 0,
-      x: -200,
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-    },
-    transition: {
-      duration: 0.5,
-      delay: 0.2,
-      ease: "easeInOut",
-    },
-  };
+  useMotionValueEvent(scrollY, "change", (val) => {
+    console.log(val);
+  });
+
+  const positiveXPosition1 = useTransform(scrollY, [0, 100], ["0%", "15%"], {
+    ease: easeInOut,
+  });
+
+  const positiveXPosition2 = useTransform(scrollY, [0, 100], ["0%", "20%"], {
+    ease: easeInOut,
+  });
+
+  const negativeXPosition1 = useTransform(scrollY, [0, 100], ["0%", "-15%"], {
+    ease: easeInOut,
+  });
+
+  const negativeXPosition2 = useTransform(scrollY, [0, 100], ["0%", "-20%"], {
+    ease: easeInOut,
+  });
 
   return (
     <section className="h-screen w-screen bg-black opacity-[0.85] space-y-10 p-8">
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
           <motion.span
+            ref={targetRef}
+            style={{ x: positiveXPosition1 }}
             variants={titleVariants}
             initial="initialLabel"
             animate="animateLabel"
@@ -71,6 +60,8 @@ export const NewHero = () => {
             Mohan Drey
           </motion.span>
           <motion.span
+            ref={targetRef}
+            style={{ x: positiveXPosition1 }}
             variants={subTitleVariants}
             initial="initial"
             animate="animate"
@@ -107,6 +98,8 @@ export const NewHero = () => {
             }}
           />
           <motion.span
+            ref={targetRef}
+            style={{ x: negativeXPosition1 }}
             variants={titleVariants}
             initial="initialLabel"
             animate="animateLabel"
@@ -127,6 +120,8 @@ export const NewHero = () => {
       <div className="flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <motion.span
+            ref={targetRef}
+            style={{ x: positiveXPosition2 }}
             variants={titleVariants}
             initial="initialLabel"
             animate="animateLabel"
@@ -176,6 +171,8 @@ export const NewHero = () => {
             <span>-Philippines</span>
           </motion.div>
           <motion.span
+            ref={targetRef}
+            style={{ x: negativeXPosition2 }}
             variants={titleVariants}
             initial="initialLabel"
             animate="animateLabel"
