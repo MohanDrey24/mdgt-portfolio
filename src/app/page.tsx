@@ -2,7 +2,6 @@
 
 import HorizontalScroll from "./components/HorizontalScroll";
 import Hero from "./components/Hero";
-// import ParticlesContainer from "./components/ParticlesContainer";
 import ScrollIndicator from "./components/ScrollIndicator";
 import { AuroraEffect } from "./components/AuroraEffect";
 import { useEffect, useRef } from "react";
@@ -34,7 +33,6 @@ export default function Home() {
       ref={lenisRef}
       className="flex flex-col bg-[#E7EFF2FF]"
     >
-      {/* <ParticlesContainer /> */}
       <AuroraEffect />
       <Hero heroText={heroText} isComputerVisible={true} />
       <HorizontalScroll />
