@@ -24,9 +24,9 @@ export const NewHero = () => {
     offset: ["start end", "end start"],
   });
 
-  useMotionValueEvent(scrollY, "change", (val) => {
-    console.log(val);
-  });
+  // useMotionValueEvent(scrollY, "change", (val) => {
+  //   console.log(val);
+  // });
 
   const positiveXPosition1 = useTransform(scrollY, [0, 100], ["0%", "15%"], {
     ease: easeInOut,
