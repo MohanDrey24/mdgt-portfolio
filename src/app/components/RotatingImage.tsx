@@ -4,7 +4,7 @@ import { motion, Transition, AnimationProps } from "framer-motion";
 import Image from "next/image";
 import { cn } from "../utils/cn";
 
-const MotionImage = motion(Image);
+const MotionImage = motion.create(Image);
 
 type RotatingImageProps = {
   src: string;
