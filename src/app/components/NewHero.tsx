@@ -36,7 +36,7 @@ export const NewHero = () => {
     ease: easeInOut,
   });
 
-  const negativeXPosition1 = useTransform(scrollY, [0, 100], ["0%", "-15%"], {
+  const negativeXPosition1 = useTransform(scrollY, [0, 100], ["0%", "-20%"], {
     ease: easeInOut,
   });
 
@@ -45,9 +45,9 @@ export const NewHero = () => {
   });
 
   return (
-    <section className="h-screen w-screen bg-black opacity-[0.85] space-y-10 p-8">
-      <div className="flex flex-col gap-8">
-        <div className="flex justify-between">
+    <section className="h-screen w-screen bg-black opacity-[0.85] px-[24px]">
+      <div className="flex flex-col">
+        <div className="flex justify-between max-h-[192px] py-[24px]">
           <motion.span
             ref={targetRef}
             style={{ x: positiveXPosition1 }}
@@ -55,7 +55,7 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.2)}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold text-nowrap overflow-hidden"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl lg:text-[144px] font-extrabold text-nowrap overflow-hidden"
           >
             Mohan Drey
           </motion.span>
@@ -66,7 +66,7 @@ export const NewHero = () => {
             initial="initial"
             animate="animate"
             transition={subTitleVariants.transition}
-            className="hidden lg:block text-white font-dm font-bold mt-5"
+            className="hidden lg:block text-white font-dm font-bold"
           >
             Mid-Level Full Stack Developer
           </motion.span>
@@ -79,12 +79,12 @@ export const NewHero = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-8">
-        <div className="flex items-center">
+      <div className="flex flex-col max-h-[192px]">
+        <div className="flex items-center py-[24px]">
           <RotatingImage
             src="/assets/windmill.svg"
             alt="windmill"
-            className="w-18 h-18 sm:w-25 sm:h-25 md:w-40 md:h-40"
+            className="w-18 h-18 sm:w-25 sm:h-25 md:w-32 md:h-32"
             initial={{ opacity: 0, y: 50 }}
             animate={{
               opacity: 1,
@@ -104,7 +104,7 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.4)}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold ml-auto"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
           >
             Tampon
           </motion.span>
@@ -117,8 +117,8 @@ export const NewHero = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-8">
-        <div className="flex justify-between items-center">
+      <div className="flex flex-col max-h-[192px]">
+        <div className="flex justify-between items-center py-[24px]">
           <motion.span
             ref={targetRef}
             style={{ x: positiveXPosition2 }}
@@ -126,14 +126,14 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.6)}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold text-nowrap"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap"
           >
             Full Stack
           </motion.span>
           <RotatingImage
             src="/assets/clover.svg"
             alt="clover"
-            className="w-18 h-18 sm:w-25 sm:h-25 md:w-40 md:h-40"
+            className="w-18 h-18 sm:w-25 sm:h-25 md:w-32 md:h-32"
             initial={{
               opacity: 0,
               y: 50,
@@ -158,8 +158,8 @@ export const NewHero = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-8">
-        <div className="flex">
+      <div className="flex flex-col max-h-[192px]">
+        <div className="flex py-[24px]">
           <motion.div
             variants={subTitleVariants}
             initial="initial"
@@ -177,7 +177,7 @@ export const NewHero = () => {
             initial="initialLabel"
             animate="animateLabel"
             transition={titleVariants.transition(0.8)}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[180px] font-extrabold ml-auto"
+            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
           >
             Developer
           </motion.span>
