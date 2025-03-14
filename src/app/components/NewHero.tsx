@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  circOut,
   easeInOut,
   motion,
+  useMotionValue,
   useMotionValueEvent,
   useScroll,
   useTransform,
@@ -41,6 +43,10 @@ export const NewHero = () => {
   });
 
   const negativeXPosition2 = useTransform(scrollY, [0, 100], ["0%", "-20%"], {
+    ease: easeInOut,
+  });
+
+  const negativeXPosition3 = useTransform(scrollY, [0, 100], ["0%", "-125%"], {
     ease: easeInOut,
   });
 
@@ -161,6 +167,8 @@ export const NewHero = () => {
       <div className="flex flex-col max-h-[192px]">
         <div className="flex py-[24px]">
           <motion.div
+            ref={targetRef}
+            style={{ x: negativeXPosition3 }}
             variants={subTitleVariants}
             initial="initial"
             animate="animate"
@@ -189,7 +197,6 @@ export const NewHero = () => {
           transition={dividerVariants.transition}
         />
       </div>
-      <span className="text-white">YAWA KA</span>
     </section>
   );
 };
