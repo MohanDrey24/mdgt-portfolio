@@ -1,22 +1,18 @@
 "use client";
 
-import {
-  circOut,
-  easeInOut,
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-
 import RotatingImage from "./RotatingImage";
+import { useRef } from "react";
+import { AnimatedText } from "./AnimatedText";
+import {
+  motion,
+  // useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import {
   dividerVariants,
   subTitleVariants,
   titleVariants,
 } from "../utils/HeroVariants";
-import { useRef } from "react";
 
 export const NewHero = () => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -30,52 +26,33 @@ export const NewHero = () => {
   //   console.log(val);
   // });
 
-  const positiveXPosition1 = useTransform(scrollY, [0, 100], ["0%", "15%"], {
-    ease: easeInOut,
-  });
-
-  const positiveXPosition2 = useTransform(scrollY, [0, 100], ["0%", "20%"], {
-    ease: easeInOut,
-  });
-
-  const negativeXPosition1 = useTransform(scrollY, [0, 100], ["0%", "-20%"], {
-    ease: easeInOut,
-  });
-
-  const negativeXPosition2 = useTransform(scrollY, [0, 100], ["0%", "-20%"], {
-    ease: easeInOut,
-  });
-
-  const negativeXPosition3 = useTransform(scrollY, [0, 100], ["0%", "-125%"], {
-    ease: easeInOut,
-  });
-
   return (
     <section className="h-screen w-screen bg-black opacity-[0.85] px-[24px]">
       <div className="flex flex-col">
         <div className="flex justify-between max-h-[192px] py-[24px]">
-          <motion.span
+          <AnimatedText
             ref={targetRef}
-            style={{ x: positiveXPosition1 }}
+            scrollValue={scrollY}
+            transformAmount={15}
             variants={titleVariants}
-            initial="initialLabel"
-            animate="animateLabel"
-            transition={titleVariants.transition(0.2)}
+            initialVariant="initialLabel"
+            animateVariant="animateLabel"
+            transitionDelay={0.2}
             className="text-white font-dm text-5xl sm:text-8xl md:text-9xl lg:text-[144px] font-extrabold text-nowrap overflow-hidden"
           >
             Mohan Drey
-          </motion.span>
-          <motion.span
+          </AnimatedText>
+          <AnimatedText
             ref={targetRef}
-            style={{ x: positiveXPosition1 }}
+            scrollValue={scrollY}
+            transformAmount={15}
             variants={subTitleVariants}
-            initial="initial"
-            animate="animate"
-            transition={subTitleVariants.transition}
+            initialVariant="initial"
+            animateVariant="animate"
             className="hidden lg:block text-white font-dm font-bold"
           >
             Mid-Level Full Stack Developer
-          </motion.span>
+          </AnimatedText>
         </div>
         <motion.hr
           variants={dividerVariants}
@@ -103,17 +80,18 @@ export const NewHero = () => {
               ease: "easeOut",
             }}
           />
-          <motion.span
+          <AnimatedText
             ref={targetRef}
-            style={{ x: negativeXPosition1 }}
+            scrollValue={scrollY}
+            transformAmount={-20}
             variants={titleVariants}
-            initial="initialLabel"
-            animate="animateLabel"
-            transition={titleVariants.transition(0.4)}
+            initialVariant="initialLabel"
+            animateVariant="animateLabel"
+            transitionDelay={0.4}
             className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
           >
             Tampon
-          </motion.span>
+          </AnimatedText>
         </div>
         <motion.hr
           variants={dividerVariants}
@@ -125,17 +103,18 @@ export const NewHero = () => {
 
       <div className="flex flex-col max-h-[192px]">
         <div className="flex justify-between items-center py-[24px]">
-          <motion.span
+          <AnimatedText
             ref={targetRef}
-            style={{ x: positiveXPosition2 }}
+            scrollValue={scrollY}
+            transformAmount={20}
             variants={titleVariants}
-            initial="initialLabel"
-            animate="animateLabel"
-            transition={titleVariants.transition(0.6)}
+            initialVariant="initialLabel"
+            animateVariant="animateLabel"
+            transitionDelay={0.6}
             className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap"
           >
             Full Stack
-          </motion.span>
+          </AnimatedText>
           <RotatingImage
             src="/assets/clover.svg"
             alt="clover"
@@ -166,29 +145,30 @@ export const NewHero = () => {
 
       <div className="flex flex-col max-h-[192px]">
         <div className="flex py-[24px]">
-          <motion.div
+          <AnimatedText
             ref={targetRef}
-            style={{ x: negativeXPosition3 }}
+            scrollValue={scrollY}
+            transformAmount={-125}
             variants={subTitleVariants}
-            initial="initial"
-            animate="animate"
-            transition={subTitleVariants.transition}
+            initialVariant="initial"
+            animateVariant="animate"
             className="hidden lg:flex lg:flex-col text-white font-dm font-bold"
           >
             <span>Cebu City</span>
             <span>-Philippines</span>
-          </motion.div>
-          <motion.span
+          </AnimatedText>
+          <AnimatedText
             ref={targetRef}
-            style={{ x: negativeXPosition2 }}
+            scrollValue={scrollY}
+            transformAmount={-20}
             variants={titleVariants}
-            initial="initialLabel"
-            animate="animateLabel"
-            transition={titleVariants.transition(0.8)}
+            initialVariant="initialLabel"
+            animateVariant="animateLabel"
+            transitionDelay={0.8}
             className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
           >
             Developer
-          </motion.span>
+          </AnimatedText>
         </div>
         <motion.hr
           variants={dividerVariants}
