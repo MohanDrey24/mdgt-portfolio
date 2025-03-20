@@ -3,11 +3,7 @@
 import RotatingImage from "./RotatingImage";
 import { useRef } from "react";
 import { AnimatedText } from "./AnimatedText";
-import {
-  motion,
-  // useMotionValueEvent,
-  useScroll,
-} from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import {
   dividerVariants,
   subTitleVariants,
@@ -21,10 +17,6 @@ export const NewHero = () => {
     target: targetRef,
     offset: ["start end", "end start"],
   });
-
-  // useMotionValueEvent(scrollY, "change", (val) => {
-  //   console.log(val);
-  // });
 
   return (
     <section className="h-screen w-screen bg-black opacity-[0.85] px-[24px]">
