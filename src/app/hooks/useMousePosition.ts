@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, RefObject } from "react";
 
-const useMousePosition = () => {
+const useMousePosition = (elementRef: RefObject<HTMLDivElement | null>) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const updateMousePosition = (e: MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
+    if (elementRef.current) {
+      const rect = elementRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setMousePosition({ x, y });
+    }
   };
 
   useEffect(() => {
@@ -12,7 +17,7 @@ const useMousePosition = () => {
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
     };
-  }, []);
+  }, [elementRef]);
 
   return mousePosition;
 };
