@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import useMousePosition from "../hooks/useMousePosition";
 
 export const MaskedComponent = () => {
@@ -11,14 +11,8 @@ export const MaskedComponent = () => {
   const { x, y } = useMousePosition(containerRef);
   const size = isHovered ? 400 : 0;
 
-  // Add viewport scroll detection
-  const { scrollYProgress } = useScroll({
-    target: textRef,
-    offset: ["start end", "end start"],
-  });
-
   return (
-    <main className="h-screen bg-black opacity-[0.85]">
+    <main className="h-screen bg-black opacity-[0.85] overflow-hidden">
       <motion.div
         ref={containerRef}
         className="w-full h-full flex items-center justify-center absolute bg-red-500"
@@ -44,7 +38,7 @@ export const MaskedComponent = () => {
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="text-[64px] w-[1000px] p-[40px] text-white font-dm font-bold cursor-none"
+          className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-white font-dm font-bold"
         >
           A visual designer - with skills that haven't been replaced by A.I
           (yet) - making good shit only if the paycheck is equally good.
@@ -60,11 +54,12 @@ export const MaskedComponent = () => {
             duration: 1,
             ease: "easeOut",
           }}
-          className="w-[1000px] p-[40px] text-[64px] text-white font-dm font-bold"
+          className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-white font-dm font-bold"
         >
-          I'm a<span className="text-[#ec4e39]"> selectively skilled </span>
-          product designer with strong focus on producing high quality &
-          impactful digital experience.
+          I'm a versatile{" "}
+          <span className="text-red-500">full-stack developer</span> dedicated
+          to crafting efficient & meaningful digital experiences from front to
+          back.
         </motion.p>
       </div>
     </main>
