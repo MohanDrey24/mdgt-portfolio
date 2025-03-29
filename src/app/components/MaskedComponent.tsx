@@ -19,6 +19,7 @@ export const MaskedComponent = () => {
         style={{
           maskImage: 'url("/assets/mask.svg")',
           maskRepeat: "no-repeat",
+          WebkitMaskSize: "0px",
         }}
         animate={{
           WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
@@ -40,8 +41,8 @@ export const MaskedComponent = () => {
           onMouseLeave={() => setIsHovered(false)}
           className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-white font-dm font-bold"
         >
-          A visual designer - with skills that haven't been replaced by A.I
-          (yet) - making good shit only if the paycheck is equally good.
+          A web developer - with skills that haven't been replaced by A.I (yet)
+          - making good shit only if the paycheck is equally good.
         </motion.p>
       </motion.div>
 
@@ -56,8 +57,8 @@ export const MaskedComponent = () => {
           }}
           className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-white font-dm font-bold"
         >
-          I'm a versatile{" "}
-          <span className="text-red-500">full-stack developer</span> dedicated
+          I'm a versatile
+          <span className="text-red-500"> full-stack developer</span> dedicated
           to crafting efficient & meaningful digital experiences from front to
           back.
         </motion.p>
