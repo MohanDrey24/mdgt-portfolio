@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import useMousePosition from "../hooks/useMousePosition";
+import useMousePosition from "@/app/hooks/useMousePosition";
 
 export const MaskedComponent = () => {
   const [isHovered, setIsHovered] = useState(false);
