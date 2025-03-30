@@ -1,5 +1,5 @@
 import { Html, useProgress } from "@react-three/drei";
-import useProgressStore from "../stores/useProgressStore";
+import useProgressStore from "@/app/stores/useProgressStore";
 import { useEffect } from "react";
 
 const CanvasLoader = () => {
