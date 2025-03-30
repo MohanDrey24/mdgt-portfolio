@@ -1,5 +1,4 @@
-import { cn } from "../utils/cn";
-import { ChevronDown } from "lucide-react";
+import { cn } from "@/app/utils/cn";
 
 type ScrollIndicatorProps = {
   className?: string;
