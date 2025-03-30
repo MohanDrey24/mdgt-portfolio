@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { cn } from "../utils/cn";
+import { cn } from "@/app/utils/cn";
 
 interface TypewriterEffectProps {
   text: string[];
