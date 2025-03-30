@@ -7,7 +7,7 @@ import {
   Transition,
 } from "framer-motion";
 import { ReactNode, RefObject } from "react";
-import { cn } from "../utils/cn";
+import { cn } from "@/app/utils/cn";
 
 type CustomVariants = Variants & {
   transition: ((delay: number) => Transition) | Transition;
