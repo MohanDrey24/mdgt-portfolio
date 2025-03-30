@@ -2,7 +2,7 @@
 
 import { motion, Transition, AnimationProps } from "framer-motion";
 import Image from "next/image";
-import { cn } from "../utils/cn";
+import { cn } from "@/app/utils/cn";
 
 const MotionImage = motion.create(Image);
 
