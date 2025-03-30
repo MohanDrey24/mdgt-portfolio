@@ -4,7 +4,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Engine } from "@tsparticles/engine";
 import { loadFull } from "tsparticles";
 import { useEffect, useState } from "react";
-import { cn } from "../utils/cn";
+import { cn } from "@/app/utils/cn";
 
 type ParticlesContainerProps = {
   className?: string;
