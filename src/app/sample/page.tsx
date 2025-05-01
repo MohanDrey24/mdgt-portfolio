@@ -1,6 +1,7 @@
 "use client";
 
-import HorizontalScroll from "../components/HorizontalScroll";
+import { FolderScroll } from "../components/FolderScroll";
+// import HorizontalScroll from "../components/HorizontalScroll";
 import { MaskedComponent } from "../components/MaskedComponent";
 import { NewHero } from "../components/NewHero";
 
@@ -9,7 +10,8 @@ const Sample = () => {
     <div>
       <NewHero />
       <MaskedComponent />
-      <HorizontalScroll />
+      {/* <HorizontalScroll /> */}
+      <FolderScroll />
     </div>
   );
 };
