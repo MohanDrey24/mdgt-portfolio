@@ -1,4 +1,4 @@
-import { useState, useEffect, RefObject } from "react";
+import { useState, useEffect, RefObject } from 'react';
 
 const useMousePosition = (elementRef: RefObject<HTMLDivElement | null>) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -13,9 +13,9 @@ const useMousePosition = (elementRef: RefObject<HTMLDivElement | null>) => {
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", updateMousePosition);
+    window.addEventListener('mousemove', updateMousePosition);
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
+      window.removeEventListener('mousemove', updateMousePosition);
     };
   }, [elementRef]);
 
