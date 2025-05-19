@@ -6,7 +6,7 @@ interface CardProps {
   src: string;
   link: string;
   color: string;
-  className?: string;
+  index: number;
 }
 
 export const Card = ({
@@ -15,16 +15,14 @@ export const Card = ({
   src,
   link,
   color,
-  className,
+  index,
 }: CardProps) => {
   return (
     <div className="sticky top-0 h-screen flex items-center justify-center">
       <div
-        style={{ backgroundColor: color }}
-        className={cn(
-          "flex items-center justify-center w-full h-full",
-          className
-        )}
+        // top is not working as expected
+        style={{ backgroundColor: color, top: `calc(-5vh + ${index * 25}px)` }}
+        className="flex items-center justify-center w-full h-full"
       >
         {title}
       </div>
