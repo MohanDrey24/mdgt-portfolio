@@ -5,7 +5,7 @@ export const StackingCardsEffect = () => {
   return (
     <div className="relative">
       {projects.map((proj, index) => {
-        return <Card key={index} {...proj} className={`mt-${index * 5}`} />;
+        return <Card key={index} {...proj} index={index} />;
       })}
     </div>
   );
