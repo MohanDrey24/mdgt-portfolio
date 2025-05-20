@@ -3,10 +3,10 @@ import { projects } from "../utils/data";
 
 export const StackingCardsEffect = () => {
   return (
-    <div className="relative">
+    <main className="bg-black opacity-[0.85] pt-[50vh] pb-[50vh]">
       {projects.map((proj, index) => {
         return <Card key={index} {...proj} index={index} />;
       })}
-    </div>
+    </main>
   );
 };
