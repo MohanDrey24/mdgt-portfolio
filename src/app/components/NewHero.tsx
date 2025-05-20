@@ -103,7 +103,7 @@ export const NewHero = () => {
             initialVariant="initialLabel"
             animateVariant="animateLabel"
             transitionDelay={0.6}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap"
+            className="text-red-500 font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap"
           >
             Full Stack
           </AnimatedText>
@@ -157,7 +157,7 @@ export const NewHero = () => {
             initialVariant="initialLabel"
             animateVariant="animateLabel"
             transitionDelay={0.8}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
+            className="text-red-500 font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
           >
             Developer
           </AnimatedText>
