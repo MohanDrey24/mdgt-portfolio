@@ -1,5 +1,3 @@
-import { cn } from "../utils/cn";
-
 interface CardProps {
   title: string;
   description: string;
@@ -21,8 +19,8 @@ export const Card = ({
     <div className="sticky top-0 h-screen flex items-center justify-center">
       <div
         // top is not working as expected
-        style={{ backgroundColor: color, top: `calc(-5vh + ${index * 25}px)` }}
-        className="flex items-center justify-center w-full h-full"
+        style={{ backgroundColor: color }}
+        className="flex items-center justify-center sm:w-[1000px] sm:h-[500px] w-full h-full sm:rounded-4xl rounded-none"
       >
         {title}
       </div>
