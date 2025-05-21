@@ -37,7 +37,7 @@ export const NewHero = () => {
           <AnimatedText
             ref={targetRef}
             scrollValue={scrollY}
-            transformAmount={15}
+            transformAmount={5}
             variants={subTitleVariants}
             initialVariant="initial"
             animateVariant="animate"
