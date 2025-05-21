@@ -56,7 +56,7 @@ export const AnimatedText = ({
       initial={initialVariant}
       animate={animateVariant}
       transition={transitionValue}
-      className={cn("flex items-center min-h-[72px] ", className)}
+      className={cn("flex items-center min-h-[72px]", className)}
     >
       {children}
     </motion.span>
