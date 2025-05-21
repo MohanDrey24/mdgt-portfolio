@@ -12,7 +12,7 @@ export const MaskedComponent = () => {
   const size = isHovered ? 400 : 0;
 
   return (
-    <main className="h-screen bg-black opacity-[0.85] overflow-hidden">
+    <main className="h-screen w-screen bg-black opacity-[0.85] overflow-hidden">
       <motion.div
         ref={containerRef}
         className="w-full h-full flex items-center justify-center absolute bg-red-500"
