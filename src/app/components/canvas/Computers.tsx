@@ -10,8 +10,6 @@ type ComputersProps = {
   isMobile: boolean;
 };
 
-// refactor this. the computer should only rotate when my cursor is on my left and right or when i scroll up and down
-
 const Computers = ({ isMobile }: ComputersProps) => {
   const ref = useRef<THREE.Group>(null);
   const computer = useGLTF("./desktop_pc/scene.gltf");
