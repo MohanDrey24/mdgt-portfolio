@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Transition, AnimationProps } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/app/utils/cn";
 
@@ -12,8 +12,8 @@ type RotatingImageProps = {
   className?: string;
   width?: number;
   height?: number;
-  initial?: AnimationProps["initial"];
-  animate?: AnimationProps["animate"];
+  initial?: any;
+  animate?: any;
   transition?: Transition;
 };
 

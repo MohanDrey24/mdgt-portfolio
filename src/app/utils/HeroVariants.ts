@@ -14,9 +14,9 @@ export const titleVariants = {
   transition: (delay: number) => ({
     delay,
     duration: 0.8,
-    ease: "easeInOut",
+    ease: [0.42, 0, 0.58, 1],
   }),
-};
+} as any;
 
 export const subTitleVariants = {
   initial: {
@@ -30,9 +30,9 @@ export const subTitleVariants = {
   transition: {
     delay: 0.5,
     duration: 0.8,
-    ease: "easeInOut",
+    ease: [0.42, 0, 0.58, 1],
   },
-};
+} as any;
 
 export const dividerVariants = {
   initial: {
@@ -46,6 +46,6 @@ export const dividerVariants = {
   transition: {
     duration: 0.5,
     delay: 0.2,
-    ease: "easeInOut",
+    ease: [0.42, 0, 0.58, 1],
   },
-};
+} as any;

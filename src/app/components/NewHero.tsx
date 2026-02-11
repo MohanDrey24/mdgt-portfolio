@@ -70,7 +70,7 @@ export const NewHero = () => {
             transition={{
               delay: 0.2,
               duration: 3,
-              ease: "easeOut",
+              ease: [0.33, 1, 0.68, 1],
             }}
           />
           <AnimatedText
@@ -124,7 +124,7 @@ export const NewHero = () => {
             transition={{
               delay: 0.2,
               duration: 3,
-              ease: "easeOut",
+              ease: [0.33, 1, 0.68, 1],
             }}
           />
         </div>

@@ -21,10 +21,12 @@ export const MaskedComponent = () => {
           maskRepeat: "no-repeat",
           WebkitMaskSize: "0px",
         }}
-        animate={{
-          WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
-          WebkitMaskSize: `${size}px`,
-        }}
+        animate={
+          {
+            WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
+            WebkitMaskSize: `${size}px`,
+          } as any
+        }
         transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
       >
         <motion.p
