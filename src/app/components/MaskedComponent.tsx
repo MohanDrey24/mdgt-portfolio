@@ -39,10 +39,11 @@ export const MaskedComponent = () => {
           }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-white font-dm font-bold"
+          className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-black font-dm font-bold"
         >
-          A web developer - with skills that haven't been replaced by A.I (yet)
-          - making good shit only if the paycheck is equally good.
+          I'm a <span className="text-gray-400">DevOps Engineer</span> and I’ve
+          automated so much that I’m honestly not sure what I do anymore, but
+          everything still works.
         </motion.p>
       </motion.div>
 
@@ -57,10 +58,9 @@ export const MaskedComponent = () => {
           }}
           className="max-w-[90vw] p-[5vw] text-4xl md:text-6xl lg:text-[64px] text-white font-dm font-bold"
         >
-          I'm a versatile
-          <span className="text-red-500"> full-stack developer</span> dedicated
-          to crafting efficient & meaningful digital experiences from front to
-          back.
+          I'm a<span className="text-red-500"> DevOps Engineer</span> focused on
+          building reliable, scalable infrastructure and streamlining delivery
+          from code to cloud.
         </motion.p>
       </div>
     </main>

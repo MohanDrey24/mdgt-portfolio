@@ -19,9 +19,9 @@ export const NewHero = () => {
   });
 
   return (
-    <section className="h-screen w-screen bg-black opacity-[0.85] px-[24px]">
+    <section className="h-screen w-screen bg-black opacity-[0.85] px-6">
       <div className="flex flex-col">
-        <div className="flex justify-between max-h-[192px] py-[24px]">
+        <div className="flex justify-between max-h-48 py-6">
           <AnimatedText
             ref={targetRef}
             scrollValue={scrollY}
@@ -41,9 +41,10 @@ export const NewHero = () => {
             variants={subTitleVariants}
             initialVariant="initial"
             animateVariant="animate"
-            className="hidden lg:block text-white font-dm font-bold"
+            className="hidden xl:flex xl:flex-col xl:text-right text-white font-dm font-bold"
           >
-            Mid-Level Full Stack Developer
+            <span>AWS Solutions Architect - Associate</span>
+            <span className="ml-auto">DevOps Engineer</span>
           </AnimatedText>
         </div>
         <motion.hr
@@ -54,8 +55,8 @@ export const NewHero = () => {
         />
       </div>
 
-      <div className="flex flex-col max-h-[192px]">
-        <div className="flex items-center py-[24px]">
+      <div className="flex flex-col max-h-48">
+        <div className="flex items-center py-6">
           <RotatingImage
             src="/assets/windmill.svg"
             alt="windmill"
@@ -93,8 +94,8 @@ export const NewHero = () => {
         />
       </div>
 
-      <div className="flex flex-col max-h-[192px]">
-        <div className="flex justify-between items-center py-[24px]">
+      <div className="flex flex-col max-h-48">
+        <div className="flex justify-between items-center py-6">
           <AnimatedText
             ref={targetRef}
             scrollValue={scrollY}
@@ -105,7 +106,7 @@ export const NewHero = () => {
             transitionDelay={0.6}
             className="text-red-500 font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap"
           >
-            Full Stack
+            DevOps
           </AnimatedText>
           <RotatingImage
             src="/assets/clover.svg"
@@ -135,8 +136,8 @@ export const NewHero = () => {
         />
       </div>
 
-      <div className="flex flex-col max-h-[192px]">
-        <div className="flex py-[24px]">
+      <div className="flex flex-col max-h-48">
+        <div className="flex py-6">
           <AnimatedText
             ref={targetRef}
             scrollValue={scrollY}
@@ -159,7 +160,7 @@ export const NewHero = () => {
             transitionDelay={0.8}
             className="text-red-500 font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
           >
-            Developer
+            Engineer
           </AnimatedText>
         </div>
         <motion.hr
