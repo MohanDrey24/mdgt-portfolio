@@ -18,7 +18,7 @@ export const Card = ({
   color,
   index,
 }: CardProps) => {
-  const container = useRef(null);
+  const container = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -28,13 +28,21 @@ export const Card = ({
   const scale = useTransform(scrollYProgress, [0, 1], [2, 1]);
 
   return (
-    <div
-      ref={container}
-      className="sticky top-0 h-screen flex items-center justify-center"
-    >
+    <div ref={container} className="sticky top-0 h-screen">
       <div
-        style={{ backgroundColor: color, top: `calc(-10% + ${index * 25}px)` }}
-        className="flex items-center justify-center sm:w-[1000px] sm:h-[500px] w-full h-full sm:rounded-4xl rounded-none"
+        style={{
+          backgroundColor: color,
+          position: "absolute",
+          left: 0,
+          top: `${Math.min(index * 25, 75)}%`,
+          width: "100%",
+          height: `calc(100% - ${Math.min(index * 25, 75)}%)`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 100 - index,
+        }}
+        className="rounded-none"
       >
         {title}
       </div>
