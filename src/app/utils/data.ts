@@ -14,21 +14,5 @@ export const projects = [
     src: "tree.jpg",
     link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
     color: "#977F6D",
-  },
-  {
-    title: "Zissou",
-    description:
-      "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
-    src: "water.jpg",
-    link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
-    color: "#C2491D",
-  },
-  {
-    title: "Mathias Svold and Ulrik Hasemann",
-    description:
-      "The coastlines of Denmark are documented in tonal colors in a pensive new series by Danish photographers Ulrik Hasemann and Mathias Svold; an ongoing project investigating how humans interact with and disrupt the Danish coast.",
-    src: "house.jpg",
-    link: "https://www.ignant.com/2019/03/13/a-photographic-series-depicting-the-uncertain-future-of-denmarks-treasured-coastlines/",
-    color: "#B62429",
-  },
+  }
 ];
