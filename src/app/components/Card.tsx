@@ -3,20 +3,22 @@ import { useRef } from "react";
 
 interface CardProps {
   title: string;
-  description: string;
-  src: string;
-  link: string;
+  company: string;
+  jobDate: string;
+  experience: string[];
+  technologies: string[];
   color: string;
   index: number;
 }
 
 export const Card = ({
   title,
-  description,
-  src,
-  link,
+  company,
+  jobDate,
   color,
+  technologies,
   index,
+  experience,
 }: CardProps) => {
   const container = useRef<HTMLDivElement | null>(null);
 
@@ -27,7 +29,7 @@ export const Card = ({
 
   const scale = useTransform(scrollYProgress, [0, 1], [2, 1]);
 
-  const tabWidth = 200;
+  const tabWidth = 600;
   const tabHeight = 50;
   const tabOffset = index * tabWidth;
 
@@ -49,32 +51,45 @@ export const Card = ({
           borderTopLeftRadius: "12px",
           borderTopRightRadius: "12px",
           fontWeight: "600",
-          fontSize: "14px",
+          fontSize: "20px",
         }}
       >
         {title}
       </div>
-      
+
       {/* Card Body */}
       <div
         style={{
           backgroundColor: color,
-          position: "absolute",
-          left: 0,
           top: `${tabHeight}px`,
-          width: "100%",
           height: `calc(100% - ${tabHeight}px)`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           zIndex: 100 - index,
           padding: "2rem",
         }}
-        className="rounded-none"
+        className="rounded-none absolute left-0 w-full flex"
       >
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">{title}</h2>
-          <p className="text-lg">{description}</p>
+        <div className="*:font-dm">
+          <h1 className="font-bold text-5xl">{title}</h1>
+          <h2 className="font-bold text-3xl">{company}</h2>
+          <h3 className="text-2xl">{jobDate}</h3>
+          <ul className="list-disc pl-5 mt-4">
+            {experience.map((item, key) => (
+              <li className="text-2xl" key={key}>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-2 mt-6">
+            {technologies.map((tech, key) => (
+              <span
+                key={key}
+                className="inline-block px-3 py-1 bg-white/10 text-white rounded-full text-sm w-fit whitespace-nowrap border border-black"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

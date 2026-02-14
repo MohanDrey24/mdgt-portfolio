@@ -19,7 +19,7 @@ export const NewHero = () => {
   });
 
   return (
-    <section className="h-screen w-screen bg-black opacity-[0.85] px-6">
+    <section className="h-125 md:h-screen w-screen bg-black opacity-[0.85] px-6">
       <div className="flex flex-col">
         <div className="flex justify-between max-h-48 py-6">
           <AnimatedText
