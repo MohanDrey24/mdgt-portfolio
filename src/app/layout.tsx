@@ -36,7 +36,15 @@ export default function RootLayout({
   }, []);
 
   return (
-    <ReactLenis root>
+    <ReactLenis
+      root
+      ref={lenisRef}
+      options={{
+        duration: 1.2,
+        wheelMultiplier: 0.4,
+        easing: (t: number) => t * (2 - t),
+      }}
+    >
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
