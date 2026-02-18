@@ -21,7 +21,7 @@ export const Card = ({
 
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["end end", "start start"],
+    offset: ["start start", "end start"],
   });
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.75]);
@@ -33,7 +33,7 @@ export const Card = ({
   return (
     <div
       ref={container}
-      className="sticky top-0 h-screen flex items-center justify-center gap-5"
+      className="sticky top-0 h-screen flex items-center justify-center"
     >
       <motion.div
         style={{ 
