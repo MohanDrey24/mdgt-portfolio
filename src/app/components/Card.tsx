@@ -1,6 +1,5 @@
-import { useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-
+import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 interface CardProps {
   title: string;
   description: string;
@@ -18,26 +17,33 @@ export const Card = ({
   color,
   index,
 }: CardProps) => {
-  const container = useRef(null);
+  const container = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start end", "start start"],
+    offset: ["end end", "start start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.75]);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("Page scroll: ", latest);
+  });
 
   return (
     <div
       ref={container}
-      className="sticky top-0 h-screen flex items-center justify-center"
+      className="sticky top-0 h-screen flex items-center justify-center gap-5"
     >
-      <div
-        style={{ backgroundColor: color, top: `calc(-10% + ${index * 25}px)` }}
-        className="flex items-center justify-center sm:w-[1000px] sm:h-[500px] w-full h-full sm:rounded-4xl rounded-none"
+      <motion.div
+        style={{ 
+          scale,
+          backgroundColor: color,
+        }}
+        className="flex items-center justify-center w-full h-full rounded-xl"
       >
         {title}
-      </div>
+      </motion.div>
     </div>
   );
 };
