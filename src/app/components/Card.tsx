@@ -1,5 +1,8 @@
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { AnimatedText } from "./AnimatedText";
+import { titleVariants } from "../utils/HeroVariants";
+
 interface CardProps {
   projectId: number;
   title: string;
@@ -23,11 +26,17 @@ export const Card = ({
 }: CardProps) => {
   const container = useRef<HTMLDivElement | null>(null);
   const stickyViewportRef = useRef<HTMLDivElement | null>(null);
+  const targetRef = useRef<HTMLDivElement | null>(null);
 
   const [scaleValue, setScaleValue] = useState(1);
 
   const { scrollYProgress } = useScroll({
     target: container,
+    offset: ["start end", "end start"],
+  });
+
+  const { scrollY } = useScroll({
+    target: targetRef,
     offset: ["start end", "end start"],
   });
 
@@ -70,9 +79,35 @@ export const Card = ({
             scale,
             backgroundColor: color,
           }}
-          className="flex items-center justify-center w-full h-full rounded-4xl"
+          className="flex items-center justify-center w-full h-full rounded-4xl flex-col"
         >
-          {title}
+          <motion.div
+            ref={targetRef}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+            }}
+            className="text-[100px] font-bold text-white left-20 absolute"
+          >
+            {title}
+          </motion.div>
+          <motion.div
+            ref={targetRef}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{
+              delay: 0.5,
+              duration: 1,
+              ease: "easeOut",
+            }}
+            className="text-[24px] font-bold text-white left-20 bottom-60 absolute w-[1000px]"
+          >
+            {description}
+          </motion.div>
           <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p>
         </motion.div>
       </div>

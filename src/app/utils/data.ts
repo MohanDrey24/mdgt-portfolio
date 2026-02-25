@@ -3,7 +3,7 @@ export const projects = [
     projectId: 1,
     title: "DevOps Diaries",
     description:
-      "Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.",
+      "DevOps Diaries is my personal knowledge base for cloud and platform engineering — a collection of practical tutorials, real-world architecture notes, and thoughtful reflections on trade-offs. I write the guides I wish I had when I was learning: clear, hands-on, and grounded in experience.",
     src: "rock.jpg",
     link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
     color: "#BBACAF",
