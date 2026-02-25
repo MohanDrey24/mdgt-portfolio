@@ -31,7 +31,7 @@ export const Card = ({
     offset: ["start end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.90]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
   useMotionValueEvent(scale, "change", (latest) => {
     setScaleValue(latest);
@@ -70,7 +70,7 @@ export const Card = ({
             scale,
             backgroundColor: color,
           }}
-          className="flex items-center justify-center w-full h-full rounded-xl"
+          className="flex items-center justify-center w-full h-full rounded-4xl"
         >
           {title}
           <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p>
