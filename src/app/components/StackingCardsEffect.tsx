@@ -45,18 +45,20 @@ export const StackingCardsEffect = () => {
     <main ref={rootRef} className="bg-black opacity-[0.85]">
       <div ref={startSentinelRef} />
       {showOverlay && (
-        <div className="fixed top-20 left-30 z-50 pointer-events-none">
-          <div className="rounded-full flex flex-col items-center justify-center w-35 h-35 bg-black/60 px-3 py-2 text-white backdrop-blur">
-            <span className="text-lg uppercase tracking-wider opacity-70">
+        <div className="fixed top-10 left-10 z-50 pointer-events-none">
+          <div className="rounded-full flex flex-col items-center justify-center w-25 h-25 sm:w-35 sm:h-35 bg-black/60 px-3 py-2 text-white backdrop-blur">
+            <span className="text-sm sm:text-lg uppercase tracking-wider opacity-70">
               Project
             </span>
 
             <div className="flex items-baseline gap-1">
-              <div className="text-2xl font-bold opacity-70">
+              <div className="text-xl sm:text-2xl font-bold opacity-70">
                 {activeProjectId}
               </div>
-              <div className="text-2xl font-bold">/</div>
-              <div className="text-2xl font-bold">{projects.length}</div>
+              <div className="text-xl sm:text-2xl font-bold">/</div>
+              <div className="text-xl sm:text-2xl font-bold">
+                {projects.length}
+              </div>
             </div>
           </div>
         </div>

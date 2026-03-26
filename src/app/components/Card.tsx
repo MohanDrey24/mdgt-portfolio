@@ -28,7 +28,6 @@ export const Card = ({
 }: CardProps) => {
   const container = useRef<HTMLDivElement | null>(null);
   const stickyViewportRef = useRef<HTMLDivElement | null>(null);
-  const targetRef = useRef<HTMLDivElement | null>(null);
 
   const [scaleValue, setScaleValue] = useState(1);
 
@@ -37,7 +36,7 @@ export const Card = ({
     offset: ["start end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
 
   useMotionValueEvent(scale, "change", (latest) => {
     setScaleValue(latest);
@@ -67,19 +66,15 @@ export const Card = ({
 
   return (
     <div ref={container} className="relative h-[200vh]">
-      <div
-        ref={stickyViewportRef}
-        className="sticky top-0 h-screen flex items-center justify-center"
-      >
+      <div ref={stickyViewportRef} className="sticky top-0 h-screen flex">
         <motion.div
           style={{
             scale,
             backgroundColor: color,
           }}
-          className="flex items-center justify-center w-full h-full rounded-4xl flex-col"
+          className="flex items-start pt-50 px-5 sm:px-16 w-full h-full rounded-4xl flex-col"
         >
           <motion.div
-            ref={targetRef}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -87,7 +82,7 @@ export const Card = ({
               duration: 1,
               ease: "easeOut",
             }}
-            className="text-[40px] sm:text-[80px] font-bold text-white"
+            className="text-[40px] sm:text-[60px] font-bold text-white"
           >
             {title}
           </motion.div>
@@ -95,7 +90,6 @@ export const Card = ({
             return (
               <motion.div
                 key={idx}
-                ref={targetRef}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -104,13 +98,29 @@ export const Card = ({
                   duration: 1,
                   ease: "easeOut",
                 }}
-                className="text-[14px] font-bold text-black max-w-[90%] sm:max-w-175"
+                className="text-[14px] text-black max-w-[90%] sm:max-w-175"
               >
                 {line}
               </motion.div>
             );
           })}
-          <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p>
+          <motion.a
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            transition={{
+              delay: 0.75,
+              duration: 1,
+              ease: "easeOut",
+            }}
+            className="text-[20px]font-bold text-white"
+          >
+            Visit Site
+          </motion.a>
+          {/* <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p> */}
         </motion.div>
       </div>
     </div>

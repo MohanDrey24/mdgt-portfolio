@@ -8,7 +8,7 @@ export const projects = [
       "I write clear, hands-on guides based on real experience.",
     ],
     src: "rock.jpg",
-    link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
+    link: "https://devops-diaries.org",
     color: "#BBACAF",
   },
   {
