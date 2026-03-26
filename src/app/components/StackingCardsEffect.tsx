@@ -7,7 +7,7 @@ export const StackingCardsEffect = () => {
   const startSentinelRef = useRef<HTMLDivElement | null>(null);
   const endSentinelRef = useRef<HTMLDivElement | null>(null);
   const [activeProjectId, setActiveProjectId] = useState<number>(
-    projects[0]?.projectId ?? 0
+    projects[0]?.projectId ?? 0,
   );
   const [isSectionInView, setIsSectionInView] = useState(false);
   const [hasFullyVisibleCard, setHasFullyVisibleCard] = useState(false);
@@ -52,13 +52,12 @@ export const StackingCardsEffect = () => {
             </span>
 
             <div className="flex items-baseline gap-1">
-              <div className="text-2xl font-bold opacity-70">{activeProjectId}</div>
-              <div className="text-2xl font-bold">/</div>
-              <div className="text-2xl font-bold">
-                {projects.length}
+              <div className="text-2xl font-bold opacity-70">
+                {activeProjectId}
               </div>
+              <div className="text-2xl font-bold">/</div>
+              <div className="text-2xl font-bold">{projects.length}</div>
             </div>
-
           </div>
         </div>
       )}

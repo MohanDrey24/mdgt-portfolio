@@ -1,12 +1,14 @@
-import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { AnimatedText } from "./AnimatedText";
-import { titleVariants } from "../utils/HeroVariants";
-
 interface CardProps {
   projectId: number;
   title: string;
-  description: string;
+  description: string[];
   src: string;
   link: string;
   color: string;
@@ -35,11 +37,6 @@ export const Card = ({
     offset: ["start end", "end start"],
   });
 
-  const { scrollY } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  });
-
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
   useMotionValueEvent(scale, "change", (latest) => {
@@ -61,7 +58,7 @@ export const Card = ({
       },
       {
         threshold: [0, 0.98, 1],
-      }
+      },
     );
 
     observer.observe(el);
@@ -90,24 +87,29 @@ export const Card = ({
               duration: 1,
               ease: "easeOut",
             }}
-            className="text-[100px] font-bold text-white left-20 absolute"
+            className="text-[40px] sm:text-[80px] font-bold text-white"
           >
             {title}
           </motion.div>
-          <motion.div
-            ref={targetRef}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{
-              delay: 0.5,
-              duration: 1,
-              ease: "easeOut",
-            }}
-            className="text-[24px] font-bold text-white left-20 bottom-60 absolute w-[1000px]"
-          >
-            {description}
-          </motion.div>
+          {description.map((line, idx) => {
+            return (
+              <motion.div
+                key={idx}
+                ref={targetRef}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{
+                  delay: 0.5,
+                  duration: 1,
+                  ease: "easeOut",
+                }}
+                className="text-[14px] font-bold text-black max-w-[90%] sm:max-w-175"
+              >
+                {line}
+              </motion.div>
+            );
+          })}
           <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p>
         </motion.div>
       </div>
