@@ -5,6 +5,8 @@ import {
   useTransform,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
+
 interface CardProps {
   projectId: number;
   title: string;
@@ -72,7 +74,7 @@ export const Card = ({
             scale,
             backgroundColor: color,
           }}
-          className="flex items-start pt-50 px-5 sm:px-16 w-full h-full rounded-4xl flex-col"
+          className="flex items-start pt-35 sm:pt-50 px-5 sm:px-16 w-full h-full rounded-4xl flex-col"
         >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -82,7 +84,7 @@ export const Card = ({
               duration: 1,
               ease: "easeOut",
             }}
-            className="text-[40px] sm:text-[60px] font-bold text-white"
+            className="text-[40px] sm:text-[60px] font-bold text-white mb-4"
           >
             {title}
           </motion.div>
@@ -116,12 +118,14 @@ export const Card = ({
               duration: 1,
               ease: "easeOut",
             }}
-            className="text-[20px]font-bold text-white"
+            className="text-[20px] font-bold text-white flex items-center gap-2 mt-4"
           >
-            Visit Site
+            Visit Site <ExternalLink className="w-5 h-5" />
           </motion.a>
           {/* <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p> */}
         </motion.div>
+
+        <hr className="border border-black"/>
       </div>
     </div>
   );
