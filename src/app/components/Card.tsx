@@ -11,6 +11,7 @@ interface CardProps {
   projectId: number;
   title: string;
   description: string[];
+  technologies: string[];
   src: string;
   link: string;
   color: string;
@@ -22,6 +23,7 @@ export const Card = ({
   projectId,
   title,
   description,
+  technologies,
   src,
   link,
   color,
@@ -79,7 +81,7 @@ export const Card = ({
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.5 }}
             transition={{
               duration: 1,
               ease: "easeOut",
@@ -94,22 +96,23 @@ export const Card = ({
                 key={idx}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
+                viewport={{ once: false, amount: 0.5 }}
                 transition={{
                   delay: 0.5,
                   duration: 1,
                   ease: "easeOut",
                 }}
-                className="text-[14px] text-black max-w-[90%] sm:max-w-175"
+                className="text-[14px] text-black w-full"
               >
                 {line}
               </motion.div>
             );
           })}
+
           <motion.a
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.5 }}
             href={link}
             target="_blank"
             rel="noopener noreferrer"
@@ -123,9 +126,35 @@ export const Card = ({
             Visit Site <ExternalLink className="w-5 h-5" />
           </motion.a>
           {/* <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p> */}
-        </motion.div>
 
-        <hr className="border border-black"/>
+          <motion.div
+            aria-hidden="true"
+            initial={{ opacity: 0, scaleX: 0, x: -24 }}
+            whileInView={{ opacity: 1, scaleX: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+            className="h-0.5 w-full max-w-full mt-6 mb-4 bg-white/90 mix-blend-difference origin-left rounded-full"
+          />
+          <div className="flex space-x-2">
+            {technologies.map((tech, idx) => (
+              <motion.p
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{
+                  delay: 0.75 + idx * 0.3,
+                  duration: 0.2,
+                  ease: "easeOut",
+                }}
+                className="text-[18px] text-white inset-0 font-bold"
+              >
+                {tech}
+              </motion.p
+              >
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
