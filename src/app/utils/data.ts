@@ -10,7 +10,7 @@ export const projects = [
     technologies: ["Python", "Mkdocs Material", "CloudFlare", "HTML/CSS"],
     src: "rock.jpg",
     link: "https://devops-diaries.org",
-    color: "#BBACAF",
+    color: "#CDB4DB",
   },
   {
     projectId: 2,
@@ -21,7 +21,7 @@ export const projects = [
     technologies: ["AWS", "Terraform", "Kubernetes", "CI/CD"],
     src: "tree.jpg",
     link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
-    color: "#977F6D",
+    color: "#FFC8DD",
   },
   {
     projectId: 3,
@@ -32,7 +32,7 @@ export const projects = [
     technologies: ["AWS", "Terraform", "Kubernetes", "CI/CD"],
     src: "water.jpg",
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
-    color: "#C2491D",
+    color: "#FFAFCC",
   },
   {
     projectId: 4,
@@ -43,7 +43,7 @@ export const projects = [
     technologies: ["AWS", "Terraform", "Kubernetes", "CI/CD"],
     src: "house.jpg",
     link: "https://www.ignant.com/2019/03/13/a-photographic-series-depicting-the-uncertain-future-of-denmarks-treasured-coastlines/",
-    color: "#B62429",
+    color: "#BDE0FE",
   },
   {
     projectId: 5,
@@ -54,6 +54,6 @@ export const projects = [
     technologies: ["AWS", "Terraform", "Kubernetes", "CI/CD"],
     src: "cactus.jpg",
     link: "https://www.ignant.com/2023/04/12/mark-rammers-all-over-again-is-a-study-of-regret-and-the-willingness-to-move-forward/",
-    color: "#88A28D",
+    color: "#CFF5E7",
   },
 ];
