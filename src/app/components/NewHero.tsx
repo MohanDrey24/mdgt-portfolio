@@ -9,6 +9,12 @@ import {
   subTitleVariants,
   titleVariants,
 } from "../utils/HeroVariants";
+import { Permanent_Marker } from "next/font/google";
+
+const permanentMarker = Permanent_Marker({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const NewHero = () => {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -30,7 +36,7 @@ export const NewHero = () => {
             initialVariant="initialLabel"
             animateVariant="animateLabel"
             transitionDelay={0.2}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl lg:text-[144px] font-extrabold text-nowrap overflow-hidden"
+            className={`${permanentMarker.className} text-white text-5xl sm:text-8xl md:text-9xl lg:text-[144px] font-extrabold text-nowrap overflow-hidden`}
           >
             Mohan Drey
           </AnimatedText>
@@ -81,7 +87,7 @@ export const NewHero = () => {
             initialVariant="initialLabel"
             animateVariant="animateLabel"
             transitionDelay={0.4}
-            className="text-white font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
+            className={`${permanentMarker.className} text-white text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto`}
           >
             Tampon
           </AnimatedText>
@@ -104,7 +110,7 @@ export const NewHero = () => {
             initialVariant="initialLabel"
             animateVariant="animateLabel"
             transitionDelay={0.6}
-            className="text-red-500 font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap"
+            className={`${permanentMarker.className} text-red-500 text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold text-nowrap`}
           >
             DevOps
           </AnimatedText>
@@ -158,7 +164,7 @@ export const NewHero = () => {
             initialVariant="initialLabel"
             animateVariant="animateLabel"
             transitionDelay={0.8}
-            className="text-red-500 font-dm text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto"
+            className={`${permanentMarker.className} text-red-500 text-5xl sm:text-8xl md:text-9xl xl:text-[144px] font-extrabold ml-auto`}
           >
             Engineer
           </AnimatedText>
