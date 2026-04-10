@@ -7,7 +7,7 @@ export const projects = [
       "It includes tutorials, real-world architecture notes, and key trade-offs.",
       "I write clear, hands-on guides based on real experience.",
     ],
-    technologies: ["Python", "Mkdocs Material", "CloudFlare", "HTML/CSS"],
+    technologies: ["Python", "Mkdocs", "CloudFlare", "HTML/CSS"],
     src: "rock.jpg",
     link: "https://devops-diaries.org",
     color: "#CDB4DB",
