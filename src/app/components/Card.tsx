@@ -1,11 +1,10 @@
 import {
-  AnimatePresence,
   motion,
   useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { getCardColors } from "../utils/colorPicker";
 
@@ -39,6 +38,11 @@ export const Card = ({
   const container = useRef<HTMLDivElement | null>(null);
   const stickyViewportRef = useRef<HTMLDivElement | null>(null);
 
+  const images = imageListProp ?? [];
+  const hasImages = images.length > 0;
+  const stackCount = hasImages ? Math.min(3, images.length) : 0;
+  const [frontIndex, setFrontIndex] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
@@ -59,39 +63,42 @@ export const Card = ({
           onFullyInView(projectId);
         }
       },
-      {
-        threshold: [0, 0.98, 1],
-      },
+      { threshold: [0, 0.98, 1] },
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, [onFullyInView, projectId]);
 
-  const images = imageListProp ?? [];
-  const hasImages = images.length > 0;
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const stackCount = hasImages ? Math.min(3, images.length) : 0;
-  const stackIndices = hasImages
-    ? Array.from({ length: stackCount }, (_, layerIndex) => {
-        const stepsBehindFront = stackCount - 1 - layerIndex;
-        return (
-          (activeImageIndex - stepsBehindFront + images.length) % images.length
-        );
-      })
-    : [];
+  useEffect(() => {
+    setFrontIndex(0);
+  }, [images.length]);
 
   useEffect(() => {
     if (!hasImages) return;
     if (images.length < 2) return;
     if (shouldReduceMotion) return;
+    if (stackCount < 2) return;
 
     const intervalId = window.setInterval(() => {
-      setActiveImageIndex((prev) => (prev + 1) % images.length);
+      setFrontIndex((prev) => (prev + 1) % images.length);
     }, 2200);
 
     return () => window.clearInterval(intervalId);
-  }, [hasImages, images, shouldReduceMotion]);
+  }, [hasImages, images.length, shouldReduceMotion, stackCount]);
+
+  const visibleStack = useMemo(() => {
+    if (!hasImages) return [] as Array<{ srcIndex: number; depthFromFront: number }>;
+
+    return images
+      .map((_, srcIndex) => {
+        const depthFromFront =
+          (frontIndex - srcIndex + images.length) % images.length;
+        return { srcIndex, depthFromFront };
+      })
+      .filter(({ depthFromFront }) => depthFromFront < stackCount)
+      .sort((a, b) => b.depthFromFront - a.depthFromFront); // back -> front
+  }, [frontIndex, hasImages, images, stackCount]);
 
   return (
     <div ref={container} className="relative h-[200vh]">
@@ -155,8 +162,8 @@ export const Card = ({
 
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             {technologies.map((tech, techIndex) => (
+              <Fragment key={`${tech}-${techIndex}`}>
                 <motion.span
-                  key={`${tech}-${techIndex}`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.5 }}
@@ -169,52 +176,45 @@ export const Card = ({
                 >
                   {tech}
                 </motion.span>
+                {techIndex !== technologies.length - 1 && (
+                  <span aria-hidden="true" className="opacity-70">
+                    •
+                  </span>
+                )}
+              </Fragment>
             ))}
           </div>
 
           {hasImages && (
             <div className="mt-10 w-full lg:mt-0 lg:absolute lg:bottom-10 lg:right-16 lg:w-150 xl:w-200">
-              <div className="relative w-full max-w-4xl aspect-video overflow-visible">
-                <AnimatePresence initial={false}>
-                  {stackIndices.map((imgIndex, layerIndex) => {
-                    const depthFromFront = stackCount - 1 - layerIndex; // 0 = front
-                    const y = -depthFromFront * 14;
-                    const cardScale = 1 - depthFromFront * 0.04;
-                    const isFront = depthFromFront === 0;
+              <div className="relative w-full aspect-video overflow-visible">
+                {visibleStack.map(({ srcIndex, depthFromFront }) => {
+                  const y = -depthFromFront * 14;
+                  const cardScale = 1 - depthFromFront * 0.04;
+                  const zIndex = 100 - depthFromFront;
 
-                    return (
-                      <motion.div
-                        key={imgIndex}
-                        className="absolute inset-0"
-                        style={{ zIndex: 10 + layerIndex }}
-                        initial={
-                          isFront && !shouldReduceMotion
-                            ? { y: 26, scale: 1.02 }
-                            : false
-                        }
-                        animate={{ y, scale: cardScale }}
-                        exit={
-                          shouldReduceMotion
-                            ? { y, scale: cardScale }
-                            : { y: y - 10, scale: cardScale - 0.01 }
-                        }
-                        transition={
-                          shouldReduceMotion
-                            ? { duration: 0 }
-                            : { duration: 1, ease: "easeOut" }
-                        }
-                      >
-                        <div className="h-full w-full overflow-hidden rounded-2xl ring-1 ring-black/10 shadow-xl bg-black/5">
-                          <img
-                            src={images[imgIndex]}
-                            alt={`${title} screenshot ${imgIndex + 1}`}
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </AnimatePresence>
+                  return (
+                    <motion.div
+                      key={`stack-${srcIndex}`}
+                      className="absolute inset-0 will-change-transform"
+                      style={{ zIndex }}
+                      animate={{ y, scale: cardScale }}
+                      transition={
+                        shouldReduceMotion
+                          ? { duration: 0 }
+                          : { duration: 0.55, ease: "easeOut" }
+                      }
+                    >
+                      <div className="h-full w-full overflow-hidden rounded-2xl ring-1 ring-black/10 shadow-xl bg-black/5">
+                        <img
+                          src={images[srcIndex]}
+                          alt={`${title} screenshot ${srcIndex + 1}`}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           )}
