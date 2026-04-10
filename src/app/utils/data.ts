@@ -9,6 +9,11 @@ export const projects = [
     ],
     technologies: ["Python", "Mkdocs", "CloudFlare", "HTML/CSS"],
     src: "rock.jpg",
+    images: [
+      "/assets/devops-diaries-1.jpg",
+      "/assets/devops-diaries-2.jpg",
+      "/assets/devops-diaries-3.jpg",
+    ],
     link: "https://devops-diaries.org",
     color: "#CDB4DB",
   },

@@ -1,5 +1,7 @@
 import {
+  AnimatePresence,
   motion,
+  useReducedMotion,
   useMotionValueEvent,
   useScroll,
   useTransform,
@@ -14,6 +16,7 @@ interface CardProps {
   description: string[];
   technologies: string[];
   src: string;
+  images?: string[];
   link: string;
   color: string;
   index: number;
@@ -26,12 +29,14 @@ export const Card = ({
   description,
   technologies,
   src,
+  images,
   link,
   color,
   index,
   onFullyInView,
 }: CardProps) => {
   const cardColors = getCardColors(color);
+  const shouldReduceMotion = useReducedMotion();
   const container = useRef<HTMLDivElement | null>(null);
   const stickyViewportRef = useRef<HTMLDivElement | null>(null);
 
@@ -70,6 +75,21 @@ export const Card = ({
     return () => observer.disconnect();
   }, [onFullyInView, projectId]);
 
+  const hasImages = Array.isArray(images) && images.length > 0;
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (!hasImages) return;
+    if (images.length < 2) return;
+    if (shouldReduceMotion) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveImageIndex((prev) => (prev + 1) % images.length);
+    }, 2200);
+
+    return () => window.clearInterval(intervalId);
+  }, [hasImages, images, shouldReduceMotion]);
+
   return (
     <div ref={container} className="relative h-[200vh]">
       <div ref={stickyViewportRef} className="sticky top-0 h-screen flex">
@@ -79,7 +99,9 @@ export const Card = ({
             backgroundColor: color,
             color: cardColors.fg,
           }}
-          className="flex items-start pt-35 sm:pt-50 px-5 sm:px-16 w-full h-full rounded-4xl flex-col"
+          className={`relative flex items-start pt-35 sm:pt-50 px-5 sm:px-16 w-full h-full rounded-4xl flex-col ${
+            hasImages ? "lg:pr-168" : ""
+          }`}
         >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -129,7 +151,6 @@ export const Card = ({
           >
             Visit Site <ExternalLink className="w-5 h-5" />
           </motion.a>
-          {/* <p className="text-3xl font-black">{scaleValue.toFixed(3)}</p> */}
 
           <motion.div
             aria-hidden="true"
@@ -159,6 +180,38 @@ export const Card = ({
               >
             ))}
           </div>
+
+          {hasImages && (
+            <div className="mt-10 w-full lg:mt-0 lg:absolute lg:bottom-10 lg:right-16 lg:w-130 xl:w-160">
+              <div className="relative w-full max-w-4xl aspect-video overflow-hidden rounded-2xl ring-1 ring-black/10 shadow-xl">
+                {!shouldReduceMotion && images.length > 1 && (
+                  <img
+                    src={
+                      images[
+                        (activeImageIndex - 1 + images.length) % images.length
+                      ]
+                    }
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover scale-[0.985]"
+                  />
+                )}
+
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={images[activeImageIndex]}
+                    src={images[activeImageIndex]}
+                    alt={`${title} screenshot ${activeImageIndex + 1}`}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    initial={{ y: 18, scale: 0.99 }}
+                    animate={{ y: 0, scale: 1 }}
+                    exit={{ y: -8, scale: 1.01 }}
+                    transition={{ duration: 0.75, ease: "easeOut" }}
+                  />
+                </AnimatePresence>
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
